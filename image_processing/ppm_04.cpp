@@ -203,8 +203,11 @@ void tst(ppm *image, ppm *image2,int left,int right){
 int main(){
 	std::string fname=std::string("your_file_name.ppm");
 	
-	ppm *image = new ppm(fname);
-	ppm *image2 = new ppm(image->width,image->height);
+	ppm aux(fname);
+	ppm aux2(aux.width,aux.height);
+	ppm *image = &aux;
+	ppm *image2 = &aux2;
+	
 	//Number of threads to use (the image will be divided between threads)
 	int parts = 8;
 
@@ -236,8 +239,6 @@ int main(){
 
 	//Clear memory and exit
 	delete [] tt;
-	delete image;
-	delete image2;
-
+	
 	return(0);
 }
