@@ -203,7 +203,6 @@ void tst(ppm *image, ppm *image2, int left, int right) {
     }
 }
 
-<<<<<<< HEAD
 int main() {
     std::string fname = std::string("your_file_name.ppm");
 
@@ -219,25 +218,6 @@ int main() {
 
     time_t start, end;
     time(&start);
-=======
-int main(){
-	std::string fname=std::string("your_file_name.ppm");
-	
-	ppm aux(fname);
-	ppm aux2(aux.width,aux.height);
-	ppm *image = &aux;
-	ppm *image2 = &aux2;
-	
-	//Number of threads to use (the image will be divided between threads)
-	int parts = 8;
-
-	std::vector<int>bnd=bounds(parts,image->size);
-	
-	std::thread *tt=new std::thread[parts-1];
-	
-    time_t start,end;
-    time (&start);
->>>>>>> 0f61bed6b165815ee06a58b3d65be5ecc7ef4940
     //Lauch parts-1 threads
     for (int i = 0; i < parts - 1; ++i) {
         tt[i] = std::thread(tst, &image, &image2, bnd[i], bnd[i + 1]);
@@ -258,15 +238,8 @@ int main(){
     //Save the result
     image2.write("test.ppm");
 
-<<<<<<< HEAD
     //Clear memory and exit
     delete [] tt;
 
     return 0;
-=======
-	//Clear memory and exit
-	delete [] tt;
-	
-	return(0);
->>>>>>> 0f61bed6b165815ee06a58b3d65be5ecc7ef4940
 }
