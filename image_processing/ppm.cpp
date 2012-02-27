@@ -3,13 +3,13 @@
 #include <string>
 #include <sstream>
 #include <exception>
+#include <vector>
 
 #include "ppm.h"
 
 //init with default values
 
 void ppm::init() {
-    flag_alloc = false;
     width = 0;
     height = 0;
     max_col_val = 255;
@@ -38,25 +38,14 @@ ppm::ppm(const unsigned int _width, const unsigned int _height) {
     nr_columns = width;
     size = width*height;
 
-    r = new unsigned char[size];
-    g = new unsigned char[size];
-    b = new unsigned char[size];
-    flag_alloc = true;
+    r.reserve(size);
+    g.reserve(size);
+    b.reserve(size);
 
     for (unsigned int i = 0; i < size; ++i) {
         r[i] = 0;
         g[i] = 0;
         b[i] = 0;
-    }
-}
-
-//free the memory used by the R,G,B vectors when the object is destroyed
-
-ppm::~ppm() {
-    if (flag_alloc) {
-        delete [] r;
-        delete [] g;
-        delete [] b;
     }
 }
 
@@ -98,10 +87,9 @@ void ppm::read(const std::string &fname) {
 
         size = width*height;
 
-        r = new unsigned char[size];
-        g = new unsigned char[size];
-        b = new unsigned char[size];
-        flag_alloc = true;
+        r.reserve(size);
+        g.reserve(size);
+        b.reserve(size);
 
         char aux;
         for (unsigned int i = 0; i < size; ++i) {
