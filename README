@@ -2,6 +2,12 @@ Here you could find the code for "C++11 thread tutorial", for more informations 
 
 http://solarianprogrammer.com/2011/12/16/cpp-11-thread-tutorial/
 
+or:
+
+http://solarianprogrammer.com/2012/02/27/cpp-11-thread-tutorial-part-2/
+
+for the second part of this tutorial.
+
 In order to use the image_processing code you will need a picture in ppm format, you can easily find examples 
 on the Internet, or you could use Gimp to save your own picture in ppm format.
 
