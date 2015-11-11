@@ -38,9 +38,9 @@ ppm::ppm(const unsigned int _width, const unsigned int _height) {
     nr_columns = width;
     size = width*height;
 
-    r.reserve(size);
-    g.reserve(size);
-    b.reserve(size);
+    r.resize(size);
+    g.resize(size);
+    b.resize(size);
 
     for (unsigned int i = 0; i < size; ++i) {
         r[i] = 0;
