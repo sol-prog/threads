@@ -87,9 +87,9 @@ void ppm::read(const std::string &fname) {
 
         size = width*height;
 
-        r.reserve(size);
-        g.reserve(size);
-        b.reserve(size);
+        r.resize(size);
+        g.resize(size);
+        b.resize(size);
 
         char aux;
         for (unsigned int i = 0; i < size; ++i) {
